@@ -1,0 +1,36 @@
+<!-- main -->
+<div id="main">
+    <div class="page">
+        <h1><strong>Introduction</strong></h1><br>
+CodeforcesのAPIはJSON形式で一部のデータを入手出来ます。<br>
+データにアクセスするには各メソッド固有の値をつけて、http://codeforces.com/api/{methodName} へHTTPリクエストを送信します。<br>
+各メソッドはJSON形式のデータの中にstatus, comment, resultの3つの要素があります。<br>
+・stasusで返される値は "OK" か "FAILED" のどちらかである。<br>
+・もしも、"FAILED"である場合はcommentにその理由が記述されます。 "OK"であるならばcommentは記述されません。<br>
+・もしも、"OK"である場合はresultに各メソッドに応じたデータが記述されます。 "FAILED"であるならばresultは記述されません。<br>
+<br>
+APIの利用は最大で1秒に5回までのリクエストの制限があります。 もしも、制限を超えるリクエストを送信した場合は”FAILED"となり、commentには"Call limit exceeded"が記述されます。<br>
+<br>
+JSON形式のデータの中に記述される要素はデフォルトの言語で記述されます。または、パラメータで指定することによってen(英語)かru(ロシア語)を選択することが出来ます。<br>
+<br>
+<h2><strong>Authorization</strong></h2><br>
+全てのメソッドは匿名でリクエストの送信が出来ます。 あるユーザーがコンテスト中にhackを受けているなどのプライベートなデータにアクセスする場合には http://codeforces.com/settings/api からkeyとsecretを取得してリクエストの際に送信する必要があります。<br>
+
+1.apiKey - keyのことです。<br>
+2.time - UNIX時間での現在時刻。サーバー時刻と5分以上違う場合にはリクエストは拒否されます。<br>
+3.apiSig - keyとsecretが署名になります。apiSigの最初の6文字は任意に設定することが出来ます。各リクエストに応じてランダムに設定するのがよいです。SHA-512を使用した場合には以下のようになる。<br>
+
+例：<br>
+keyが「xxx」 secretが「yyy」で、任意指定の文字は「123456」として、contest 566(VK Cup 2015 - Finals, online mirror)のcontest.hacksメソッドを利用する場合は以下のようになる。 http://codeforces.com/api/contest.hacks?contestId=566&amp;apiKey=xxx&amp;time=1464232010&amp;apiSig=123456&lt;hash&gt;　なお、&lt;hash&gt; はsha512Hex(123456/contest.hacks?apiKey=xxx&amp;contestId=566&amp;time=1464232010#yyy)によって生成したものです。
+実際にHASHを生成したURL例は下記の様になります(現在はapiキー削除済、有効時間経過のため無効です)。<br>
+<a href="http://codeforces.com/api/contest.hacks?contestId=566&apiKey=427e14c63bd825e5a1c4ea99ca18123b3c2c14ef&time=1464788859&apiSig=1234567950e582ca67f9b6e07bc342cee1ecd19faec262a246d0a2dcc5d283da964374d52afd52d3961cfc74a446e202c1713c7238e97bf1d134a586411075425a32fd">右クリックでリンクをコピー</a><br>
+<br>
+補足：<br>
+SHA512でHASH作る方法はシェルコマンドではわからなかったです。試した方法ではimport hashlibをして hashlib.sha512("123456/contest.hacks?apiKey=xxx&contestId=566&time=UNIX時間#yyy").hexdigest() で生成出来ます。手動操作で調べるときはある程度準備して、有効時間切れに注意してください。<br>
+
+<h2><strong>JSONP</strong></h2><br>
+JSONP形式もサポートしています。 jsonpはJavaScriptによって利用出来ます。<br>
+リクエストの結果はjson形式では {"status":"OK","response":"..."} となっているものが、jsonp形式では parseResponse({"status":"OK","response":"..."}); となります。<br>
+                </div>
+            </div>
+            <!-- main -->
