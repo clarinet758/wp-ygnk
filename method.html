@@ -1,0 +1,345 @@
+<h1><strong>Methods</strong></h1>
+※各メソッドを利用の際には必須となるパラメータと任意のものとがあります。
+
+
+<h2><strong><a name="blogEntryComments">blogEntry.comments</a></strong></h2>
+指定したblog記事のコメントの一覧が返されます。
+<table class="type1">
+<tbody>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>blogEntryId (必須)</td>
+<td>各blogの記事に割り当てられたID 例:<a href="http://codeforces.com/blog/entry/79">/blog/entry/79</a></td>
+</tr>
+</tbody>
+</table>
+返り値：指定した記事のコメント(<a href="http://ygnk.mydns.jp/index.php/return-objects/#Comment">comment</a>)
+例：<a href="http://codeforces.com/api/blogEntry.comments?blogEntryId=79">http://codeforces.com/api/blogEntry.comments?blogEntryId=79</a>
+</br>
+<h2><strong><a name="blogEntryView">blogEntry.view</a></strong></h2>
+指定したblog記事の本文が返されます。
+<table class="type1">
+<tbody>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>blogEntryId (必須)</td>
+<td>各blogの記事に割り当てられたID 例:<a href="http://codeforces.com/blog/entry/79">/blog/entry/79</a></td>
+</tr>
+</tbody>
+</table>
+返り値：指定した記事の本文
+例：<a href="http://codeforces.com/api/blogEntry.view?blogEntryId=79">http://codeforces.com/api/blogEntry.view?blogEntryId=79</a>
+</br>
+<h2><strong><a name="contestHacks">contest.hacks</a></strong></h2>
+指定したコンテストのhackの結果が返されます。完全な情報はコンテスト終了から一定時間後になります。コンテスト中は自身のhackのみ閲覧が可能です。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId (必須)</td>
+      <td>各コンテストに割り当てられたID ラウンド数とは異なります。 例:<a href="http://codeforces.com/contest/566">/contest/566</a></td>
+    </tr>
+  </tbody>
+ </table>
+
+返り値：指定したコンテストのhack。(A,B,C...など全問題が対象になるので注意)
+例：<a href="http://codeforces.com/api/contest.hacks?contestId=566">http://codeforces.com/api/contest.hacks?contestId=566</a>
+</br>
+<h2><strong><a name="contestList">contest.list</a></strong></h2>
+指定したコンテストの情報が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>gym</td>
+      <td>bool型 trueを指定でgymの情報が得られる。それ以外の場合は通常のコンテストの情報が得られる。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：指定したコンテストの情報
+ 例：<a href="http://codeforces.com/api/contest.list?gym=true">http://codeforces.com/api/contest.list?gym=true</a>&nbsp;&nbsp;gymのパラメータを省略した場合はfalseとなる。
+<br>
+<h2><strong><a name="contestRatingChanges">contest.ratingChanges</a></strong></h2>
+指定したコンテスト終了後のレーティングの変動が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId (必須)</td>
+      <td>各コンテストに割り当てられたID ラウンド数とは異なります。 例:<a href="http://codeforces.com/contest/566">/contest/566</a></td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：指定したコンテストの終了後のレーティングの変動が得られます。
+ 例：<a href="http://codeforces.com/api/contest.ratingChanges?contestId=566">http://codeforces.com/api/contest.ratingChanges?contestId=566</a>
+<br>
+<h2><strong><a name="contestStandings">contest.standings</a></strong></h2>
+指定したコンテスト終了後の参加者の順位が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId (必須)</td>
+      <td>各コンテストに割り当てられたID ラウンド数とは異なります。 例:<a href="http://codeforces.com/contest/566">/contest/566</a></td>
+    </tr>
+    <tr>
+      <td>from</td>
+      <td>1位からの場合にはfrom=1で順位の始まりを指定します。</td>
+    </tr>
+    <tr>
+      <td>count</td>
+      <td>開始位置から追加で何位まで見るかを指定します。</td>
+    </tr>
+    <tr>
+      <td>handles</td>
+      <td>セミコロン区切りで任意の参加者(10000人まで)を指定します。from〜countとは同時に指定出来ない？</td>
+    </tr>
+    <tr>
+      <td>room</td>
+      <td>該当のroomのデータが得られます。</td>
+    </tr>
+    <tr>
+      <td>showUnofficial</td>
+      <td>trueで指定した場合にはvirtual参加者、div違い、レーティング対象外者などを含みます。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値："contest", "problems" , "rows"の3つの要素があります。contestはcontest。problemsはproblems。rowsはrows。
+ 例：<a href="http://codeforces.com/api/contest.standings?contestId=566&from=1&count=5&showUnofficial=true">http://codeforces.com/api/contest.standings?contestId=566&from=1&count=5&showUnofficial=true</a>
+<br>
+<h2><strong><a name="contestStatus">contest.status</a></strong></h2>
+指定したコンテストの提出結果が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId (必須)</td>
+      <td>各コンテストに割り当てられたID ラウンド数とは異なります。 例:<a href="http://codeforces.com/contest/566">/contest/566</a></td>
+    </tr>
+    <tr>
+      <td>handle</td>
+      <td>codeforcesユーザーのハンドルネームを指定します。</td>
+    </tr>
+    <tr>
+      <td>from</td>
+      <td>1が最新のもので始まりを指定します。</td>
+    </tr>
+    <tr>
+      <td>count</td>
+      <td>何件分の提出かを指定します。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：Submissionが得られます。降順でソートされています。
+ 例：<a href="http://codeforces.com/api/contest.status?contestId=566&from=1&count=10">http://codeforces.com/api/contest.status?contestId=566&from=1&count=10</a>
+<br>
+<h2><strong><a name="problemsetProblems">problemset.problems</a></strong></h2>
+出題済の問題が返されます。tagでフィルタリングが出来ます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>tags</td>
+      <td>セミコロン区切りで複数タグ指定が出来ます。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値： Problem と ProblemStatistics が得られます。
+ 例：<a href="http://codeforces.com/api/problemset.problems?tags=dp;math">http://codeforces.com/api/problemset.problems?tags=dp;math</a>
+<br>
+<h2><strong><a name="problemsetRecentStatus">problemset.recentStatus</a></strong></h2>
+最近の提出が得られます。from指定が使えないようです。あくまでも最近(recent)の提出を見るもののようです。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>count (必須)</td>
+      <td>件数を指定します。上限は1000件です。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値： Submission が得られます。 最近の提出IDから降順でソートされています。
+ 例：<a href="http://codeforces.com/api/problemset.recentStatus?count=10">http://codeforces.com/api/problemset.recentStatus?count=10</a>
+<br>
+<h2><strong><a name="recentActions">recentActions</a></strong></h2>
+codeforcesのblogの新着記事、新着コメントが得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>maxCount (必須)</td>
+      <td>件数を指定します。上限は100件です。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：  RecentAction が得られます。 from、新着記事のみ、新着コメントのみなどの指定は出来ないようです。
+ 例：<a href="http://codeforces.com/api/recentActions?maxCount=30">http://codeforces.com/api/recentActions?maxCount=30</a>
+<br>
+<h2><strong><a name="userBlogEntries">user.blogEntries</a></strong></h2>
+該当のユーザーのcodeforcesのblogの情報が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handle (必須)</td>
+      <td>ハンドルネームを指定します。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値： BlogEntry が得られます。 情報は省略版？？。
+ 例：<a href="http://codeforces.com/api/user.blogEntries?handle=Fefer_Ivan">http://codeforces.com/api/user.blogEntries?handle=Fefer_Ivan</a>
+<br>
+<h2><strong><a name="userFriends">user.friends</a></strong></h2>
+該当のユーザーのフレンド情報が得られます。認証が必要です。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>onlyOnline</td>
+      <td>bool型 trueを指定でオンラインのユーザーのみにフィルタリング。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：ユーザーのハンドルネーム が得られます。 api keyが必要？？。
+ 例：<a href="http://codeforces.com/api/user.friends?onlyOnline=true">http://codeforces.com/api/user.friends?onlyOnline=true</a>
+<br>
+<h2><strong><a name="userInfo">user.info</a></strong></h2>
+該当のユーザーの情報が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handles (必須)</td>
+      <td>ハンドルネームでユーザーを指定します。 セミコロン区切りで上限は10000件です。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：該当ユーザーの User が得られます。
+ 例：<a href="http://codeforces.com/api/user.info?handles=DmitriyH;Fefer_Ivan">http://codeforces.com/api/user.info?handles=DmitriyH;Fefer_Ivan</a>
+<br>
+<h2><strong><a name="userRatedList">user.ratedList</a></strong></h2>
+ユーザーのレーティングが得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>activeOnly</td>
+      <td>bool型 trueを指定で先月までに参加履歴のあるユーザーのみにフィルタリングします。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値：User が得られます。レーティング値で降順(順位では昇順)でソートされています。
+ 例：<a href="http://codeforces.com/api/user.ratedList?activeOnly=true">http://codeforces.com/api/user.ratedList?activeOnly=true</a>
+<br>
+<h2><strong><a name="userRating">user.rating</a></strong></h2>
+該当ユーザーのレーティングの履歴が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handle (必須)</td>
+      <td>ハンドルネームでユーザーを指定します。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値： RatingChange が得られます。古->新でソートされているようです。
+ 例：<a href="http://codeforces.com/api/user.rating?handle=Fefer_Ivan">http://codeforces.com/api/user.rating?handle=Fefer_Ivan</a>
+<br>
+<h2><strong><a name="userStatus">user.status</a></strong></h2>
+該当ユーザーの提出の履歴が得られます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handle (必須)</td>
+      <td>ハンドルネームでユーザーを指定します。</td>
+    </tr>
+    <tr>
+      <td>from</td>
+      <td>1が最新のもので始まりを指定します。</td>
+    </tr>
+    <tr>
+      <td>count</td>
+      <td>件数を指定します。</td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ 返り値： 該当ユーザーの  Submission  が得られます。提出の新しいものから降順にソートされています。
+ 例：<a href="http://codeforces.com/api/user.status?handle=Fefer_Ivan&from=1&count=10">http://codeforces.com/api/user.status?handle=Fefer_Ivan&from=1&count=10</a>
+<br>
+

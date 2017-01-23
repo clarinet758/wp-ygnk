@@ -1,0 +1,623 @@
+<h1><strong>Return objects</strong></h1>
+<a name="User"><h2><strong>User</strong></h2></a>
+codeforcesのユーザーの情報が返されます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handle</td>
+      <td>str型 codeforcesのハンドルネーム</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>str型 連絡を取るためのメールアドレス(但しユーザーが公開設定で登録している場合)</td>
+    </tr>
+    <tr>
+      <td>vkId</td>
+      <td>str型 VK(主にロシア系？のSNS)のユーザーID(但しユーザーが公開設定で登録している場合)</td>
+    </tr>
+    <tr>
+      <td>openId</td>
+      <td>str型 OpenIDのユーザーID(但しユーザーが公開設定で登録している場合)</td>
+    </tr>
+    <tr>
+      <td>firstName</td>
+      <td>str型 人名。海外圏ではファーストネーム。日本語圏では下の名前。空欄の場合がある。</td>
+    </tr>
+    <tr>
+      <td>lastName</td>
+      <td>str型 人名。海外圏ではラストネームかファミリーネーム。日本語圏では上の名前。空欄の場合がある。</td>
+    </tr>
+    <tr>
+      <td>country</td>
+      <td>str型 国。現在の居住地か出生地かは規定なし？ 空欄の場合がある。</td>
+    </tr>
+    <tr>
+      <td>city</td>
+      <td>str型 都市。現在の居住地か出生地かは規定なし？ 空欄の場合がある。</td>
+    </tr>
+    <tr>
+      <td>organization</td>
+      <td>str型 所属組織。学校名や勤務先など。空欄の場合がある。</td>
+    </tr>
+    <tr>
+      <td>contribution</td>
+      <td>int型 contribution、詳細不明。blogでいいねをされるか、friend登録をされると増える？</td>
+    </tr>
+    <tr>
+      <td>rank</td>
+      <td>str型 現在のレーティングに応じた呼称(SpecialistやExpertなど)。</td>
+    </tr>
+    <tr>
+      <td>rating</td>
+      <td>int型 現在のレーティング。</td>
+    </tr>
+    <tr>
+      <td>rank</td>
+      <td>str型 レーティングに応じた呼称(SpecialistやExpertなど)。</td>
+    </tr>
+    <tr>
+      <td>maxRank</td>
+      <td>str型 現在までの成績で最も成績の良かった呼称。</td>
+    </tr>
+    <tr>
+      <td>maxRating</td>
+      <td>str型 現在までの成績で最も高いレーティング。</td>
+    </tr>
+    <tr>
+      <td>lastOnlineTimeSeconds</td>
+      <td>int型 最新のオンラインの時間(UNIX時間表記)。codeforcesのユーザーページではonline nowと表記がされる場合もAPIで得られるのはUNIX時間。</td>
+    </tr>
+    <tr>
+      <td>registrationTimeSeconds</td>
+      <td>int型 codeforcesにユーザー登録した時間(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>friendOfCount</td>
+      <td>str型 friend登録されている人数。</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>avatar</td>
+      <td>str型 ユーザーアイコン(小)のURL。</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>titlePhoto</td>
+      <td>str型 ユーザーアイコン(大)のURL。</td>
+    </tr>
+    <tr>
+      </tbody>
+ </table>
+<br>
+<br>
+<a name="blogentry"><h2><strong>BlogEntry</strong></h2></a>
+codeforcesのblog記事が返されます。
+<table class="type1">
+<tbody>
+<tr>
+<th>パラメータ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>id</td>
+<td>int型 該当のblogの記事に割り当てられたID</td>
+</tr>
+<tr>
+<td>originalLocale</td>
+<td>str型 該当のblogの記事が書かれた言語。en(英語)やru(ロシア語)の2種類あることを確認。</td>
+</tr>
+<tr>
+<td>creationTimeSeconds</td>
+<td>int型 該当のblogの記事が書かれた時間(UNIX時間表記)。</td>
+</tr>
+<tr>
+<td>authorHandle</td>
+<td>str型 該当のblogの記事を書いたユーザーのハンドルネーム</td>
+</tr>
+<tr>
+<td>title</td>
+<td>str型 該当のblogの記事の件名</td>
+</tr>
+<tr>
+<td>content</td>
+<td>str型 該当のblogの記事の本文</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>str型</td>
+</tr>
+<tr>
+<td>modificationTimeSeconds</td>
+<td>int型 該当のblogの記事が更新されたUNIX時間</td>
+</tr>
+<tr>
+<td>allowViewHistory</td>
+<td>bool型 trueならば該当のblogの記事の変更履歴が見られる？</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>str型 該当のblogの記事に設定されているタグ</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>int型 該当のblogの記事の評価</td>
+</tr>
+</tbody>
+</table>
+<br>
+<a name="Comment"><h2><strong>Comment</strong></h2></a>
+codeforcesのblog記事のコメントが返されます。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int型 おそらくは投稿コメントに割り当てられたID。</td>
+    </tr>
+    <tr>
+      <td>creationTimeSeconds</td>
+      <td>int型 コメントの投稿日時(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>commentatorHandle</td>
+      <td>str型 コメントを投稿したユーザーのハンドルネーム。</td>
+    </tr>
+    <tr>
+      <td>locale</td>
+      <td>str型 投稿の言語。en(英語)やru(ロシア語)。</td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td>str型 コメント本文。</td>
+    </tr>
+    <tr>
+      <td>parentCommentId</td>
+      <td>int型 親コメントのID。既存のコメントへの返信でなければおそらく空欄になる。</td>
+    </tr>
+    <tr>
+      <td>rating</td>
+      <td>int型 いいねの数。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="RecentAction"><h2><strong>RecentAction</strong></h2></a>
+codeforcesのblogの記事かコメントの新着情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>timeSeconds</td>
+      <td>int型 投稿日時(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>blogEntry</td>
+      <td>BlogEntryの要素。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>comment</td>
+      <td>Commentの要素。空欄の場合あり。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="RatingChange"><h2><strong>RatingChange</strong></h2></a>
+該当コンテストのレーティングの変動情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>handle</td>
+      <td>str型。 codeforcesのユーザー名。</td>
+    </tr>
+    <tr>
+      <td>rank</td>
+      <td>int型 </td>
+    </tr>
+    <tr>
+      <td>ratingUpdateTimeSeconds</td>
+      <td>int型 更新時間(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>oldRating</td>
+      <td>int型 変更前のレーティング。</td>
+    </tr>
+    <tr>
+      <td>newRating</td>
+      <td>int型 更新後のレーティング。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Contest"><h2><strong>Contest</strong></h2></a>
+該当コンテストの情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int型 該当のコンテストID。</a></td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>enum型 コンテスト形式、CF, IOI, ICPC</td>
+    </tr>
+    <tr>
+      <td>phase</td>
+      <td>enum型 コンテストの状態。BEFORE, CODING, PENDING_SYSTEM_TEST, SYSTEM_TEST, FINISHED</td>
+    </tr>
+    <tr>
+      <td>frozen</td>
+      <td>bool型 trueならば順位表は凍結状態。</td>
+    </tr>
+    <tr>
+      <td>durationSeconds</td>
+      <td>int型 (UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>startTimeSeconds</td>
+      <td>int型 (UNIX時間表記)。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>relativeTimeSeconds</td>
+      <td>int型 (UNIX時間表記)。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>preparedBy</td>
+      <td>str型 作問者のハンドルネーム。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>websiteUrl</td>
+      <td>str型 コンテストと関連のあるサイトのURL。</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>str型 説明。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>difficulty</td>
+      <td>int型 難易度。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>kind</td>
+      <td>str型 。</td>
+    </tr>
+    <tr>
+      <td>icpcRegion</td>
+      <td>str型 ICPC。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>country</td>
+      <td>str型 説明。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>city</td>
+      <td>str型 説明。空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>season</td>
+      <td>str型 説明。空欄の場合あり。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Party"><h2><strong>Party</strong></h2></a>
+チームでコンテスト参加の情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>members</td>
+      <td>Member。</td>
+    </tr>
+    <tr>
+      <td>participantType</td>
+      <td>enum型 CONTESTANT, PRACTICE, VIRTUAL, MANAGER, OUT_OF_COMPETITION</td>
+    </tr>
+    <tr>
+      <td>teamId</td>
+      <td>str型 チーム名、空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>ghost</td>
+      <td>bool型 </td>
+    </tr>
+    <tr>
+      <td>room</td>
+      <td>int型 部屋番号、空欄の場合あり。</td>
+    </tr>
+    <tr>
+      <td>startTimeSeconds</td>
+      <td>int型 (UNIX時間表記)。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Member"><h2><strong>Member</strong></h2></a>
+チームの参加者情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>handle</td>
+      <td>str型 codeforcesのハンドルネーム。</a></td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Problem"><h2><strong>Problem</strong></h2></a>
+チームでコンテスト参加の情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>index</td>
+      <td>str型 </td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>str型 件名。</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>enum型 PROGRAMMING, QUESTION.。</td>
+    </tr>
+    <tr>
+      <td>points</td>
+      <td>float型 満点の点数</td>
+    </tr>
+    <tr>
+      <td>tags</td>
+      <td>str型 タグ。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="ProblemStatistics"><h2><strong>ProblemStatistics</strong></h2></a>
+チームでコンテスト参加の情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>contestId</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>index</td>
+      <td>str型 </td>
+    </tr>
+    <tr>
+      <td>solvedCount</td>
+      <td>int型 AC</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Submission"><h2><strong>Submission</strong></h2></a>
+提出の情報。
+
+<table class="type1">
+  <tbody>
+  <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int型 提出id。</td>
+    </tr>
+    <tr>
+      <td>contestId</td>
+      <td>str型 該当のコンテスト名。英語やロシア語。</td>
+    </tr>
+    <tr>
+      <td>creationTimeSeconds</td>
+      <td>int型 提出時間？(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>relativeTimeSeconds</td>
+      <td>int型 処理時間？(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>problem</td>
+      <td>problem</td>
+    </tr>
+    <tr>
+      <td>author</td>
+      <td>party</td>
+    </tr>
+    <tr>
+      <td>verdict</td>
+      <td>enum型 提出結果</td>
+    </tr>
+    <tr>
+      <td>testset</td>
+      <td>enum型 不明</td>
+    </tr>
+    <tr>
+      <td>passedTestCount</td>
+      <td>int型 通ったテストケース。</td>
+    </tr>
+    <tr>
+      <td>timeConsumedMillis</td>
+      <td>int型 1つのテストケースで最大の処理時間、ミリ秒。</td>
+    </tr>
+    <tr>
+      <td>memoryConsumedBytes</td>
+      <td>int型 1つのテストケースで最大のメモリ使用。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="Hack"><h2><strong>Hack</strong></h2></a>
+Hackの情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>int型 </td>
+    </tr>
+    <tr>
+      <td>creationTimeSeconds</td>
+      <td>int型 提出時間？(UNIX時間表記)。</td>
+    </tr>
+    <tr>
+      <td>hacker</td>
+      <td>Party object.</td>
+    </tr>
+    <tr>
+      <td>defender</td>
+      <td>Party object.</td>
+    </tr>
+    <tr>
+      <td>verdict</td>
+      <td>enum型 結果</td>
+    </tr>
+    <tr>
+      <td>problem</td>
+      <td>Problem object</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>str型 空欄に出来る。</td>
+    </tr>
+    <tr>
+      <td>judgeProtocol</td>
+      <td> "manual", "protocol" and "verdict"</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="RanklistRow"><h2><strong>RanklistRow</strong></h2></a>
+ ranklist rowの情報。
+
+<table class="type1">
+  <tbody>
+    <tr>
+      <th>パラメータ</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td>party</td>
+      <td>Party</td>
+    </tr>
+    <tr>
+      <td>rank</td>
+      <td>int型 順位</td>
+    </tr>
+    <tr>
+      <td>points</td>
+      <td>float型 合計得点</td>
+    </tr>
+    <tr>
+      <td>penalty</td>
+      <td>int型 ペナルティ、ICPC形式の場合。</td>
+    </tr>
+    <tr>
+      <td>successfulHackCount</td>
+      <td>int型 hack成功回数</td>
+    </tr>
+    <tr>
+      <td>unsuccessfulHackCount</td>
+      <td>int型 hack失敗回数</td>
+    </tr>
+    <tr>
+      <td>problemResults</td>
+      <td>ProblemResult</td>
+    </tr>
+    <tr>
+      <td>lastSubmissionTimeSeconds</td>
+      <td>int型 IOI形式の場合。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
+<a name="ProblemResult"><h2><strong>ProblemResult</strong></h2></a>
+ ProblemResultの情報。
+
+<table class="type1">
+  <tbody>
+      <td>points</td>
+      <td>float型 得点</td>
+    </tr>
+    <tr>
+      <td>penalty</td>
+      <td>int型 ペナルティ、ICPC形式の場合。</td>
+    </tr>
+    <tr>
+      <td>rejectedAttemptCount</td>
+      <td>int型 AC以外の提出回数？</td>
+    </tr>
+    <tr>
+      <td>unsuccessfulHackCount</td>
+      <td>int型 hack失敗回数</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>enum型</td>
+    </tr>
+    <tr>
+      <td>bestSubmissionTimeSeconds</td>
+      <td>int型 。</td>
+    </tr>
+      </tbody>
+ </table>
+<br>
