@@ -49,6 +49,9 @@ code {
     border: 1px solid rgb(185, 185, 185);
 }
 
+span.bold {
+    font-weight: bold;
+}
 
 /*
  * list
@@ -95,6 +98,7 @@ ul, ol {
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     }
+
 /*
  * link
  * */
@@ -366,6 +370,10 @@ a:hover {
 .thumbnail-box img{
     width: 160px;
     height: 160px;
+}
+
+.tabel-key .param {
+    font-weight: bold;
 }
 
 /*
